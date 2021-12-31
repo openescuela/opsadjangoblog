@@ -1,0 +1,1 @@
+The Django project of this tuto is the same as tuto 1 but using windows OS.
