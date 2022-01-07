@@ -1,0 +1,25 @@
+ {% load blog_tags %}
+<!--pagination for viwes with function-->
+<div class="container" data-aos="fade-up">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if page.has_previous %}
+                                <a href="?{% url_replace page=1 %}">&laquo; first</a>
+                                <a href="?{% url_replace page=page.previous_page_number %}">previous</a>
+                                {% endif %}
+
+                                <span class="current">
+                                  Page {{ page.number }} of {{ page.paginator.num_pages }}.
+                                </span>
+
+                                {% if page.has_next %}
+                                <a href="?{% url_replace page=page.next_page_number %}">next</a>
+                                <a href="?{% url_replace page=page.paginator.num_pages %}">last &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </ul>
+                </nav>
+            </div>  <!-- End pagination-->

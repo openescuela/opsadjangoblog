@@ -1,0 +1,41 @@
+{% extends "blogs/base.html" %}
+
+{% block content %}
+
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading">Welcome To Our Portfolio!</div>
+    </div>
+</header>
+
+<!-- Portfolio Grid-->
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Portfolio</h2>
+            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6">
+                {% for project in project_list %}
+                <!-- Portfolio item 6-->
+                <div class="portfolio-item">
+                  <img class="img-fluid" src="{{project.image.url}}" alt="..." />
+                    <div class="portfolio-caption">
+                        <a href="{{ project.get_absolute_url }}">{{project.name}}</a>
+                        <div class="portfolio-caption-subheading text-muted">{{project.category}}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        <!-- pagination -->
+        {% include "blogs/pagination_1.html" %}
+        </div>
+        {% include "blogs/project_searchForm.html" %}
+          
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
