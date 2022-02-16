@@ -1,0 +1,54 @@
+{% extends "blogs/base.html" %}
+
+{% block content %}
+
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading">Welcome To Our Portfolio!</div>
+    </div>
+</header>
+
+<!-- Portfolio Grid-->
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+              <!-- Nested row for non-featured blog posts-->
+              <div class="row">
+                {% if projects %}
+                <h1> The liste of project with the search term "{{query}}" are : </h1>
+                  {% for project in projects %}
+                  <div class="col-lg-6">
+                      <!-- Blog post-->
+                      <div class="card mb-4">
+                          <a href="#!"><img class="card-img-top" src="{{project.image.url}}" alt="..." /></a>
+                          <div class="card-body">
+                              <h2 class="card-title h4">{{project.name}}</h2>
+                              <h2 class="card-title h4">Client: {{project.client}}</h2>
+                              <h2 class="card-title h4">Category: {{project.category}}</h2>
+                              <p class="card-text">{{project.resume}}</p>
+                              <a class="btn btn-primary" href="{{project.get_absolute_url}}">Read more →</a>
+                          </div>
+                      </div>
+                  </div>
+                  {% endfor %}
+              </div>
+        <!-- pagination -->
+        {% include "blogs/pagination_2.html" with page=projects%}
+        {% else %}
+        <h1> There is no project with the search term "{{query}}" </h1>
+        {% endif %}
+        </div>
+
+        <div class="col-lg-4">
+        {% include "blogs/project_searchForm.html" %}
+      {% include "blogs/project_widget.html" %}
+      </div>
+
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

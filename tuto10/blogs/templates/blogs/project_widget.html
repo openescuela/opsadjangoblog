@@ -1,0 +1,33 @@
+{% load blog_tags %}
+<div class="card mb-4">
+    <div class="card-header">Categories</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <ul class="list-unstyled mb-0">
+                    {% show_list_projectcategory as categories %}
+                    {% for category in categories %}
+                    <li><a href="{% url 'blogs:portfolio' category.name 'all'%}">{{category.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card mb-4">
+    <div class="card-header">Clients</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <ul class="list-unstyled mb-0">
+                    {% show_list_projectclient as clients %}
+                    {% for client in clients %}
+                    <li><a href="{% url 'blogs:portfolio' 'all' client.name %}">{{client.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

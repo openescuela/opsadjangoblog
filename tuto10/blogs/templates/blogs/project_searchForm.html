@@ -1,0 +1,11 @@
+
+            <!-- Search widget-->
+            <div class="card mb-4">
+                <div class="card-header">Search</div>
+                <div class="card-body">
+                  <form method='GET' class='' action="{% url 'blogs:project_search'%}">
+                      <input type="text" name="query" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                      <button type="submit"><i class="fas fa-search"></i></button>
+                  </form>
+                </div>
+            </div>
